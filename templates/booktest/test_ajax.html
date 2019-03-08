@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ajax</title>
+    <script src="/static/js/jquery-3.3.1.min.js"></script>
+    <script>
+        $(function () {
+            //绑定按钮的点击事件
+            $('#btnAjax').click(function () {
+                //发起请求
+                $.ajax({
+                    url:'/ajax_handle',
+                    type:'get',
+                    dataType:'json'
+                }).done(function (data) {//语法不一样了，这里调用的是done方法
+                    //进行处理
+                        {#alert(data.res)#}
+                    if(data.res == 1){
+                        $('#message').show().html('提示信息')
+                    }
+                }) 
+            })
+        })
+    </script>
+    <style>
+        #message{
+            display: none;
+            color:red;
+        }
+    </style>
+</head>
+<body>
+    <input type="button" value="ajax请求" id="btnAjax">
+
+<div id = "message"></div>
+</body>
+
+
+</html>
